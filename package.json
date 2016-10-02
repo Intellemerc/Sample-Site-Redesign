@@ -41,7 +41,15 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "dateformat": "^1.0.12",
+    "fixed-data-table": "^0.6.3",
+    "material-ui": "^0.15.4",
     "react": "^0.14.6",
-    "react-dom": "^0.14.6"
+    "react-color": "^2.3.2",
+    "react-dom": "^0.14.6",
+    "react-onclickoutside": "^5.7.0",
+    "react-stockcharts": "^0.5.0",
+    "react-tap-event-plugin": "^1.0.0",
+    "recompose": "file:node_modules/recompose"
   }
 }
