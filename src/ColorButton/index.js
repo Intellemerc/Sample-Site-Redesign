@@ -16,7 +16,7 @@ class ColorButton extends React.Component {
   };
 
   render() {
-    const {text} = this.props;
+    const {text, onChangeComplete, currentColor} = this.props;
     const popover = {
       position: 'absolute',
       zIndex: '2',
@@ -33,7 +33,7 @@ class ColorButton extends React.Component {
         <Button onClick={ this.handleClick } style={{padding: 10}}>{text}</Button>
         { this.state.displayColorPicker ? <div style={ popover }>
           <div style={ cover } onClick={ this.handleClose }/>
-          <ChromePicker />
+          <ChromePicker onChangeComplete={onChangeComplete} color={currentColor}/>
         </div> : null }
       </div>
     )

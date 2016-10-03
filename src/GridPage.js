@@ -99,7 +99,7 @@ class GridPage extends React.Component {
         return <div style={{padding: 15}}>
                 <div>Entries</div>
                 <div style={{float: 'left'}}>Time Keeping</div>
-                <div style={{float:'right', padding: 10}}>
+                {/* <div style={{float:'right', padding: 10}}>
                 <SelectField value={this.state.value} onChange={this.handleChange}>
                   <MenuItem value={1} primaryText="All Users" />
                   <MenuItem value={2} primaryText="Every Night" />
@@ -107,7 +107,7 @@ class GridPage extends React.Component {
                   <MenuItem value={4} primaryText="Weekends" />
                   <MenuItem value={5} primaryText="Weekly" />
                 </SelectField>
-                </div>
+                </div> */}
                 <br />
                 <br />
                 <Card >
