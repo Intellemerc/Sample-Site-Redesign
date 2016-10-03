@@ -15,6 +15,8 @@ const navStyle = {
   height: '100vh',
   flex: .2
 }
+
+
 class NavMenu extends React.Component{
   handleClickOutside(evt){
     const {open, toggleMenu} = this.props;
@@ -34,12 +36,16 @@ class NavMenu extends React.Component{
     }
   ]
   render(){
-    const {open, toggleMenu, displayMode, changePage} = this.props;
+    const {open, toggleMenu, displayMode, changePage, theme} = this.props;
+
+    const navTheme = {
+      backgroundColor: theme.palette.accent1Color
+    }
     //console.log(displayMode)
     const menuItems = this.menuItems.map((itm, idx) => <MenuItem onClick={() => changePage(itm.text.toLowerCase())} key={idx}>{itm.text}</MenuItem>);
     let navMenu;
     if(displayMode === 'phone'){
-      navMenu = <Drawer open={open} docked={true}>
+      navMenu = <Drawer open={open} docked={true} containerStyle={navTheme}>
                     <AppBar title="Nav Menu"
                             style={{padding: 10, height: 95}}
                             iconElementLeft = {<IconButton
@@ -53,7 +59,11 @@ class NavMenu extends React.Component{
                     {menuItems}
                 </Drawer>
     }else{
-      navMenu = <Card containerStyle={navStyle}><CardText>{menuItems}</CardText></Card>
+      const combStyle = {
+        ...navStyle,
+        ...navTheme
+      }
+      navMenu = <Card containerStyle={combStyle}><CardText>{menuItems}</CardText></Card>
     }
 
     return navMenu;

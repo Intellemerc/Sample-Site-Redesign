@@ -62,7 +62,7 @@ class App extends React.Component {
                 height: '100vh',
                 width: '100vw'
             }}>
-                <Nav open={this.state.open} displayMode={this.getDisplayMode()} toggleMenu={this.toggle} changePage={this.changePage}/>
+                <Nav open={this.state.open} theme={theme} displayMode={this.getDisplayMode()} toggleMenu={this.toggle} changePage={this.changePage}/>
                 {this.getPage(theme, changeColorActions)}
             </div>
         </div>
