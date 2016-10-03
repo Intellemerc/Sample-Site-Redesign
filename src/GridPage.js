@@ -9,6 +9,7 @@ import {
     CardText
 } from 'material-ui/Card';
 import dateFormat from 'dateformat'
+import Dimensions from 'react-dimensions'
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
@@ -96,6 +97,8 @@ class GridPage extends React.Component {
       }
     }
     render() {
+      const {containerWidth, containerHeight} = this.props;
+
         return <div style={{padding: 15}}>
                 <div>Entries</div>
                 <div style={{float: 'left'}}>Time Keeping</div>
@@ -116,13 +119,13 @@ class GridPage extends React.Component {
 
                       rowsCount={dataList.length}
                       rowHeight={50}
-                      width={550}
-                      height={500}
+                      width={containerWidth - 30}
+                      height={containerHeight-30}
                       headerHeight={50}
                     >
                       <Column
                         cell={<ViewLinkCell data={dataList} col="Id" />}
-                        width={150}
+                        width={75}
                         flexGrow={1}
                       />
                       <Column
@@ -147,4 +150,9 @@ class GridPage extends React.Component {
     }
 }
 
-export default GridPage;
+export default Dimensions({
+    containerStyle: {
+        height: '100vh',
+        width: '100vw'
+    }
+})(GridPage);

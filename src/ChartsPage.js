@@ -46,11 +46,11 @@ export default class App extends Component {
         </Card>
         <Card style={cardStyle}>
           <CardHeader title='Card Header'></CardHeader>
-
+          <BarChart data={data} type="hybrid"/>
         </Card>
         <Card style={cardStyle}>
           <CardHeader title='Card Header'></CardHeader>
-
+          <StackBar data={stackBarData} type="hybrid"/>
         </Card>
       </div>
     );

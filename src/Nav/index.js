@@ -41,7 +41,7 @@ class NavMenu extends React.Component{
     if(displayMode === 'phone'){
       navMenu = <Drawer open={open} docked={true}>
                     <AppBar title="Nav Menu"
-                            style={{padding: 10, height: 106}}
+                            style={{padding: 10, height: 95}}
                             iconElementLeft = {<IconButton
                                           style={{display: 'block', float: 'right'}}
                                           onClick={toggleMenu}
