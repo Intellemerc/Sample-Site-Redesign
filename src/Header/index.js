@@ -14,14 +14,13 @@ import DialogExampleSimple from './TutorialDiag'
 
 export default({showMenu, displayMode}) => {
     return <AppBar title="Test Account"
-
                   iconElementLeft={
                     <div>
                       <img src="/images/CTLogo.jpg" style={{height:50, display:'block'}}/>
                       {displayMode === 'phone' ? <IconButton
                                   style={{display: 'block'}}
                                   onClick={showMenu}
-                                  tooltip="Main Menu"> <MenuIcon />
+                                  tooltip="Main Menu"> <MenuIcon style={{color: 'white'}}/>
                       </IconButton> : null}
                     </div>
                   }

@@ -45,7 +45,7 @@ class NavMenu extends React.Component{
                             iconElementLeft = {<IconButton
                                           style={{display: 'block', float: 'right'}}
                                           onClick={toggleMenu}
-                                          tooltip="Close Menu"> <MenuIcon />
+                                          tooltip="Close Menu"> <MenuIcon style={{color: 'white'}}/>
                                         </IconButton>
                                       }
                   />
