@@ -14,13 +14,18 @@ class ThemePage extends React.Component {
       }
     }
     render() {
-        const {theme, changePrimaryColor} = this.props;
+        const {theme, changeColorActions} = this.props;
 
+        console.log(theme)
         return <div style={{padding: 25}}>
                 <div style={{padding: '0 0 20px 0'}}>
                   Primary Color: {theme.palette.primary1Color}
+                  <br />
+                  Secondary Color: {theme.palette.accent1Color}
                 </div>
-                <ColorButton currentColor={theme.palette.primary1Color} onChangeComplete={changePrimaryColor} text="Primary Color"/>
+                Primary: <ColorButton currentColor={theme.palette.primary1Color} onChangeComplete={changeColorActions.changePrimaryColor} text="Primary Color"/>
+                <br />
+                Secondary: <ColorButton currentColor={theme.palette.accent1Color} onChangeComplete={changeColorActions.changeSecondaryColor} text="Secondary Color"/>
               </div>
     }
 }

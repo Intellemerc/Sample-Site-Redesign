@@ -38,7 +38,7 @@ class App extends React.Component {
             return 'tablet'
         return 'phone'
     }
-    getPage(theme, changePrimaryColor) {
+    getPage(theme, changeColorActions) {
         const {page} = this.state;
         //{page === 'chart' ?  :  }
         switch (page) {
@@ -50,7 +50,7 @@ class App extends React.Component {
                 break;
             case 'theme':
                 //const {}
-                return <ThemePage theme={theme} changePrimaryColor={changePrimaryColor}/>
+                return <ThemePage theme={theme} changeColorActions={changeColorActions}/>
                 break;
         }
     }
@@ -58,7 +58,7 @@ class App extends React.Component {
         this.setState({page: page})
     }
     render() {
-        const {changePrimaryColor, theme} = this.props;
+        const {changeColorActions, theme} = this.props;
         return <div style={{
             height: '100vh',
             width: '100vw'
@@ -70,7 +70,7 @@ class App extends React.Component {
                 width: '100vw'
             }}>
                 <Nav open={this.state.open} displayMode={this.getDisplayMode()} toggleMenu={this.toggle} changePage={this.changePage}/>
-                {this.getPage(theme, changePrimaryColor)}
+                {this.getPage(theme, changeColorActions)}
             </div>
         </div>
     }
@@ -90,21 +90,35 @@ class ThemeWrapper extends React.Component {
         this.state = {
             theme: getMuiTheme({
                 palette: {
-                    primary1Color: '#f57c20'
+                    primary1Color: '#f57c20',
+                    accent1Color: '#1F8FFF',
+                    secondaryTextColor: '#fff'
                 }
             })
         }
 
         this.changePrimaryColor = this.changePrimaryColor.bind(this);
+        this.changeSecondaryColor = this.changeSecondaryColor.bind(this);
     }
     changePrimaryColor(color) {
         const newTheme = getMuiTheme({
             palette: {
-                primary1Color: color.hex
+                primary1Color: color.hex,
+                accent1Color: this.state.theme.palette.accent1Color
             }
         });
 
         this.setState({theme: newTheme});
+    }
+    changeSecondaryColor(color){
+      const newTheme = getMuiTheme({
+          palette: {
+              primary1Color: this.state.theme.palette.primary1Color,
+              accent1Color: color.hex
+          }
+      });
+
+      this.setState({theme: newTheme});
     }
     render() {
         const {theme} = this.state;
@@ -112,7 +126,7 @@ class ThemeWrapper extends React.Component {
         return <MuiThemeProvider muiTheme={theme} style={{
             height: '100vh',
             width: '100vw'
-        }}><App changePrimaryColor={this.changePrimaryColor} theme={theme}/></MuiThemeProvider>
+        }}><App changeColorActions={{changePrimaryColor: this.changePrimaryColor, changeSecondaryColor: this.changeSecondaryColor}} theme={theme}/></MuiThemeProvider>
     }
 }
 ReactDOM.render(

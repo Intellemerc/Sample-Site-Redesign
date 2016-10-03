@@ -4,8 +4,13 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
+import RaisedButton from 'material-ui/RaisedButton';
+
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
+
+import DialogExampleSimple from './TutorialDiag'
+
 
 export default({showMenu, displayMode}) => {
     return <AppBar title="Test Account"
@@ -19,6 +24,9 @@ export default({showMenu, displayMode}) => {
                                   tooltip="Main Menu"> <MenuIcon />
                       </IconButton> : null}
                     </div>
+                  }
+                  iconElementRight={
+                    <DialogExampleSimple>Tutorials</DialogExampleSimple>
                   }
             />
 };
