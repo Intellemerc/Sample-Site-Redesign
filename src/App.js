@@ -6,21 +6,33 @@ import Nav from './Nav'
 import Header from './Header'
 import GridPage from './GridPage'
 import ThemePage from './ThemePage'
+import FormPage from './FormPage'
 
 class App extends React.Component {
     constructor() {
         super();
         this.state = {
             open: false,
-            page: 'theme'
+            page: 'form',
+            isVodafone: false
         }
         this.toggle = this.toggle.bind(this);
         this.changePage = this.changePage.bind(this);
+        this.toggleIsVodafone = this.toggleIsVodafone.bind(this);
+
     }
     toggle() {
         this.setState({
             open: !this.state.open
         });
+    }
+    toggleIsVodafone(){
+      var currentState = this.state.isVodafone;
+      this.setState({isVodafone: !currentState});
+      const primary = currentState ? '#f57c20' : '#E60000';
+      const secondary = currentState ? '#1e90ff' : '1F8FFF';
+      this.changeColorActions.changeThemeColors({primary, secondary});
+      //this.changeColorActions.changeSecondaryColor();
     }
     getDisplayMode() {
         //return 'pc';
@@ -31,7 +43,7 @@ class App extends React.Component {
             return 'tablet'
         return 'phone'
     }
-    getPage(theme, changeColorActions) {
+    getPage(theme) {
         const {page} = this.state;
         //{page === 'chart' ?  :  }
         switch (page) {
@@ -43,7 +55,10 @@ class App extends React.Component {
                 break;
             case 'theme':
                 //const {}
-                return <ThemePage theme={theme} changeColorActions={changeColorActions}/>
+                return <ThemePage toggleCarrier={this.toggleIsVodafone} theme={theme} changeColorActions={this.changeColorActions}/>
+                break;
+            case 'form':
+                return <FormPage/>;
                 break;
         }
     }
@@ -52,6 +67,7 @@ class App extends React.Component {
     }
     render() {
         const {changeColorActions, theme} = this.props;
+        this.changeColorActions = changeColorActions;
         return <div style={{
             height: '100vh',
             width: '100vw'
@@ -62,8 +78,7 @@ class App extends React.Component {
                 height: '100vh',
                 width: '100vw'
             }}>
-                <Nav open={this.state.open} theme={theme} displayMode={this.getDisplayMode()} toggleMenu={this.toggle} changePage={this.changePage}/>
-                {this.getPage(theme, changeColorActions)}
+                <Nav isVodafone={this.state.isVodafone} open={this.state.open} theme={theme} displayMode={this.getDisplayMode()} toggleMenu={this.toggle} changePage={this.changePage}/> {this.getPage(theme)}
             </div>
         </div>
     }

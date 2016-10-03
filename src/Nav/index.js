@@ -33,13 +33,17 @@ class NavMenu extends React.Component{
     },
     {
       text: 'Theme'
+    },
+    {
+      text: 'Form'
     }
   ]
   render(){
-    const {open, toggleMenu, displayMode, changePage, theme} = this.props;
+    const {open, toggleMenu, displayMode, changePage, theme, isVodafone} = this.props;
+
 
     const navTheme = {
-      backgroundColor: theme.palette.accent1Color
+      backgroundColor: isVodafone ? '#ccc' : theme.palette.accent1Color
     }
     //console.log(displayMode)
     const menuItems = this.menuItems.map((itm, idx) => <MenuItem onClick={() => changePage(itm.text.toLowerCase())} key={idx}>{itm.text}</MenuItem>);

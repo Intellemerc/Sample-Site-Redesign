@@ -1,5 +1,6 @@
 import React from 'react'
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import Toggle from 'material-ui/Toggle'
+
 
 
 
@@ -14,10 +15,14 @@ class ThemePage extends React.Component {
       }
     }
     render() {
-        const {theme, changeColorActions} = this.props;
+        const {theme, changeColorActions, toggleCarrier} = this.props;
 
         //console.log(theme)
         return <div style={{padding: 25}}>
+                <Toggle
+                  label="Toggle Vodafone"
+                  onToggle={toggleCarrier}
+                />
                 <div style={{padding: '0 0 20px 0'}}>
                   Primary Color: {theme.palette.primary1Color}
                   <br />

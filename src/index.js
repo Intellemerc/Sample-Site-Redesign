@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import App from './App'
 
-injectTapEventPlugin();
+
 
 class ThemeWrapper extends React.Component {
     constructor() {
@@ -24,26 +26,23 @@ class ThemeWrapper extends React.Component {
 
         this.changePrimaryColor = this.changePrimaryColor.bind(this);
         this.changeSecondaryColor = this.changeSecondaryColor.bind(this);
+        this.changeThemeColors = this.changeThemeColors.bind(this);
     }
-    changePrimaryColor(color) {
-        const newTheme = getMuiTheme({
-            palette: {
-                primary1Color: color.hex,
-                accent1Color: this.state.theme.palette.accent1Color
-            }
-        });
-
-        this.setState({theme: newTheme});
-    }
-    changeSecondaryColor(color){
+    changeThemeColors({primary = null, secondary = null}){
       const newTheme = getMuiTheme({
           palette: {
-              primary1Color: this.state.theme.palette.primary1Color,
-              accent1Color: color.hex
+              primary1Color: primary || this.state.theme.palette.primary1Color,
+              accent1Color: secondary || this.state.theme.palette.accent1Color
           }
       });
 
       this.setState({theme: newTheme});
+    }
+    changePrimaryColor(color) {
+        this.changeThemeColors({primary: color.hex})
+    }
+    changeSecondaryColor(color){
+      this.changeThemeColors({secondary: color.hex})
     }
     render() {
         const {theme} = this.state;
@@ -51,7 +50,7 @@ class ThemeWrapper extends React.Component {
         return <MuiThemeProvider muiTheme={theme} style={{
             height: '100vh',
             width: '100vw'
-        }}><App changeColorActions={{changePrimaryColor: this.changePrimaryColor, changeSecondaryColor: this.changeSecondaryColor}} theme={theme}/></MuiThemeProvider>
+        }}><App changeColorActions={{changePrimaryColor: this.changePrimaryColor, changeSecondaryColor: this.changeSecondaryColor, changeThemeColors: this.changeThemeColors}} theme={theme}/></MuiThemeProvider>
     }
 }
 ReactDOM.render(
