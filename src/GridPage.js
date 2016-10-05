@@ -60,22 +60,10 @@ const list = [
 
 ]
 let dataList = []
-for(let i = 0; i < 1000; i++){
+for(let i = 0; i < 100; i++){
   dataList = [...dataList, ...list]
 }
-console.log(dataList.length);
-const containerStyle = {
-    height: '100%',
-    width: '100%',
-    padding: 10
-}
-const cardStyle = {
-    flex: .8,
-    minWidth: 450,
-    maxWidth: 650,
-    padding: 10
-}
-
+console.log(dataList.length)
 const ViewLinkCell = ({rowIndex, data, col, ...props}) => {
   const url = '/fakeRowData/' + data[rowIndex][col];
   return <Cell {...props}>
@@ -97,18 +85,18 @@ class GridPage extends React.Component{
   render(){
         const {containerWidth, containerHeight} = this.props;
 
-        return <div style={{padding: 15}}>
+        return <div style={{padding: 15,height:'100vh'}}>
                 <div>Entries</div>
                 <div style={{float: 'left'}}>Time Keeping</div>
                 <br />
                 <br />
-                <Card >
+                <Card style={{height: '100%'}} >
                   <CardText style={{padding: 0}}>
                     <Table
                       rowsCount={dataList.length}
                       rowHeight={50}
                       width={containerWidth - 30}
-                      height={containerHeight-30}
+                      height={containerHeight - 30}
                       headerHeight={50}
                     >
                       <Column

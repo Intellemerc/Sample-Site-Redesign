@@ -37,12 +37,12 @@ class FormPage extends React.Component{
               <CardText>
                 <SelectExample value={selectValue} title="test" floatingLabelText="Test" handleChange={this.onSelectExampleChange}/>
                 <br />
-                <TextField
+                <TextField id="errorField"
                   hintText="Hint Text"
                   errorText="This field is required"
                 />
                 <br />
-                <TextField/>
+                <TextField id="textField"/>
               </CardText>
           </Card>
   }

@@ -53,6 +53,7 @@
     "react-stockcharts": "^0.5.0",
     "react-tap-event-plugin": "^1.0.0",
     "react-toolbox": "^1.2.1",
-    "recompose": "^0.20.2"
+    "recompose": "^0.20.2",
+    "reset-css": "^2.2.0"
   }
 }
