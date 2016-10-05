@@ -3,6 +3,7 @@ import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import TimePicker from 'material-ui/TimePicker';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import TextField from 'material-ui/TextField';
 
 const SelectExample = ({value, handleChange}) => <SelectField value={value} onChange={handleChange} >
     <MenuItem value={1} primaryText="Never"/>
@@ -35,6 +36,13 @@ class FormPage extends React.Component{
               <CardHeader title='Sample Form'></CardHeader>
               <CardText>
                 <SelectExample value={selectValue} title="test" floatingLabelText="Test" handleChange={this.onSelectExampleChange}/>
+                <br />
+                <TextField
+                  hintText="Hint Text"
+                  errorText="This field is required"
+                />
+                <br />
+                <TextField/>
               </CardText>
           </Card>
   }
