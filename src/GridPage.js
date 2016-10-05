@@ -13,6 +13,12 @@ import Dimensions from 'react-dimensions'
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
+var enhance = Dimensions({
+    containerStyle: {
+        height: '100%',
+        width: '100%'
+    }
+});
 
 let dataList = [
     {
@@ -53,13 +59,10 @@ let dataList = [
     }
 
 ]
-dataList = [
-  ...dataList,
-  ...dataList,
-  ...dataList,
-  ...dataList
-]
-
+for(let i = 0; i < 10; i++){
+  dataList = [...dataList, ...dataList]
+}
+console.log(dataList.length);
 const containerStyle = {
     height: '100%',
     width: '100%',
@@ -89,34 +92,15 @@ const DateCell = ({rowIndex, data, col, ...props}) => (
   </Cell>
 );
 //view bttn, username, clockin, clockout, total hours
-class GridPage extends React.Component {
-    constructor(){
-      super();
-      this.state = {
-        value: 0
-      }
-    }
-    render() {
-      const {containerWidth, containerHeight} = this.props;
-
+const GridPage = ({containerWidth, containerHeight}) => {
         return <div style={{padding: 15}}>
                 <div>Entries</div>
                 <div style={{float: 'left'}}>Time Keeping</div>
-                {/* <div style={{float:'right', padding: 10}}>
-                <SelectField value={this.state.value} onChange={this.handleChange}>
-                  <MenuItem value={1} primaryText="All Users" />
-                  <MenuItem value={2} primaryText="Every Night" />
-                  <MenuItem value={3} primaryText="Weeknights" />
-                  <MenuItem value={4} primaryText="Weekends" />
-                  <MenuItem value={5} primaryText="Weekly" />
-                </SelectField>
-                </div> */}
                 <br />
                 <br />
                 <Card >
                   <CardText style={{padding: 0}}>
                     <Table
-
                       rowsCount={dataList.length}
                       rowHeight={50}
                       width={containerWidth - 30}
@@ -135,24 +119,18 @@ class GridPage extends React.Component {
                       />
                       <Column
                         header={<Cell>Start Date</Cell>}
-                        cell={<DateCell data={dataList} col="StartDate">Basic content 3</DateCell>}
+                        cell={<DateCell data={dataList} col="StartDate"></DateCell>}
                         width={200}
                       />
                       <Column
                         header={<Cell>End Date</Cell>}
-                        cell={<DateCell data={dataList} col="EndDate">Basic content 3</DateCell>}
+                        cell={<DateCell data={dataList} col="EndDate"></DateCell>}
                         width={200}
                       />
                   </Table>
                 </CardText>
               </Card>
         </div>
-    }
 }
 
-export default Dimensions({
-    containerStyle: {
-        height: '100vh',
-        width: '100vw'
-    }
-})(GridPage);
+export default enhance(GridPage);

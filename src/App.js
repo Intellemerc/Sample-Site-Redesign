@@ -30,7 +30,7 @@ class App extends React.Component {
       var currentState = this.state.isVodafone;
       this.setState({isVodafone: !currentState});
       const primary = currentState ? '#f57c20' : '#E60000';
-      const secondary = currentState ? '#1e90ff' : '1F8FFF';
+      const secondary = currentState ? '#1e90ff' : '#1F8FFF';
       this.changeColorActions.changeThemeColors({primary, secondary});
       //this.changeColorActions.changeSecondaryColor();
     }
@@ -55,7 +55,7 @@ class App extends React.Component {
                 break;
             case 'theme':
                 //const {}
-                return <ThemePage toggleCarrier={this.toggleIsVodafone} theme={theme} changeColorActions={this.changeColorActions}/>
+                return <ThemePage toggleCarrier={this.toggleIsVodafone} theme={theme} changeColorActions={this.props.changeColorActions}/>
                 break;
             case 'form':
                 return <FormPage/>;
@@ -65,6 +65,7 @@ class App extends React.Component {
     changePage(page) {
         this.setState({page: page, open: false})
     }
+    changeColorActions:{}
     render() {
         const {changeColorActions, theme} = this.props;
         this.changeColorActions = changeColorActions;
@@ -78,7 +79,13 @@ class App extends React.Component {
                 height: '100vh',
                 width: '100vw'
             }}>
-                <Nav isVodafone={this.state.isVodafone} open={this.state.open} theme={theme} displayMode={this.getDisplayMode()} toggleMenu={this.toggle} changePage={this.changePage}/> {this.getPage(theme)}
+                <Nav isVodafone={this.state.isVodafone}
+                  open={this.state.open}
+                  theme={theme}
+                  displayMode={this.getDisplayMode()}
+                  toggleMenu={this.toggle}
+                  changePage={this.changePage}/>
+                {this.getPage(theme, changeColorActions)}
             </div>
         </div>
     }

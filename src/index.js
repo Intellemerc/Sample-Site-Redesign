@@ -8,8 +8,6 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import App from './App'
 
-
-
 class ThemeWrapper extends React.Component {
     constructor() {
         super();
@@ -50,7 +48,12 @@ class ThemeWrapper extends React.Component {
         return <MuiThemeProvider muiTheme={theme} style={{
             height: '100vh',
             width: '100vw'
-        }}><App changeColorActions={{changePrimaryColor: this.changePrimaryColor, changeSecondaryColor: this.changeSecondaryColor, changeThemeColors: this.changeThemeColors}} theme={theme}/></MuiThemeProvider>
+        }}><App changeColorActions={{
+                    changePrimaryColor: this.changePrimaryColor,
+                    changeSecondaryColor: this.changeSecondaryColor,
+                    changeThemeColors: this.changeThemeColors}}
+          theme={theme}/>
+      </MuiThemeProvider>
     }
 }
 ReactDOM.render(
