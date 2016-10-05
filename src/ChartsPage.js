@@ -15,7 +15,8 @@ const cardStyle = {
   flex:.8,
   minWidth: 450,
   maxWidth: 650,
-  padding: 10
+  padding: 10,
+  margin:10
 }
 
 const data=[
@@ -32,8 +33,7 @@ const stackBarData = [
     { 'x': 'Cherry', 'y1': 30, 'y2': 25, 'y3': 10, 'y4': 10 },
     { 'x': 'Peach', 'y1': 35, 'y2': 30, 'y3': 15, 'y4': 10 }
 ]
-export default class App extends Component {
-  render() {
+export default () => {
     return (
       <div style={containerStyle}>
         <Card style={cardStyle}>
@@ -54,5 +54,4 @@ export default class App extends Component {
         </Card>
       </div>
     );
-  }
 }

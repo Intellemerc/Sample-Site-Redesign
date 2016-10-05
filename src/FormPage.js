@@ -2,6 +2,7 @@ import React from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 import TimePicker from 'material-ui/TimePicker';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 const SelectExample = ({value, handleChange}) => <SelectField value={value} onChange={handleChange} >
     <MenuItem value={1} primaryText="Never"/>
@@ -11,6 +12,11 @@ const SelectExample = ({value, handleChange}) => <SelectField value={value} onCh
     <MenuItem value={5} primaryText="Weekly"/>
 </SelectField>;
 
+const style = {
+  padding:5,
+  margin: 10,
+  height: 300
+}
 
 class FormPage extends React.Component{
   constructor(){
@@ -22,12 +28,15 @@ class FormPage extends React.Component{
 
     this.onSelectExampleChange = this.onSelectExampleChange.bind(this);
   }
-  onSelectExampleChange = (event, index, value) => this.setState({selectValue});
+  onSelectExampleChange = (event, index, value) => this.setState({selectValue: value});
   render(){
     const {selectValue} = this.state;
-    return <div>
-      <SelectExample value={selectValue} handleChange={this.onSelectExampleChange}/>
-    </div>
+    return <Card style={style} >
+              <CardHeader title='Sample Form'></CardHeader>
+              <CardText>
+                <SelectExample value={selectValue} title="test" floatingLabelText="Test" handleChange={this.onSelectExampleChange}/>
+              </CardText>
+          </Card>
   }
 }
 

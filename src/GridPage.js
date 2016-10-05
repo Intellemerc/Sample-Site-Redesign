@@ -20,7 +20,7 @@ var enhance = Dimensions({
     }
 });
 
-let dataList = [
+const list = [
     {
         Id: 1,
         UserName: 'James',
@@ -30,8 +30,8 @@ let dataList = [
     {
         Id: 2,
         UserName:'Bob',
-        StartDate: new Date(),
-        EndDate: new Date()
+        StartDate: new Date("2016-12-1 5:00"),
+        EndDate: new Date("2016-7-12 5:00")
     },
     {
         Id: 3,
@@ -42,14 +42,14 @@ let dataList = [
     {
         Id: 4,
         UserName:'Jill',
-        StartDate: new Date(),
-        EndDate: new Date()
+        StartDate: new Date("2016-1-1 5:00"),
+        EndDate: new Date("2016-1-1 5:00")
     },
     {
         Id: 5,
         UserName:'Janet',
         StartDate: new Date(),
-        EndDate: new Date()
+        EndDate: new Date("2016-2-1 5:00")
     },
     {
         Id: 6,
@@ -59,8 +59,9 @@ let dataList = [
     }
 
 ]
-for(let i = 0; i < 10; i++){
-  dataList = [...dataList, ...dataList]
+let dataList = []
+for(let i = 0; i < 1000; i++){
+  dataList = [...dataList, ...list]
 }
 console.log(dataList.length);
 const containerStyle = {
@@ -92,7 +93,10 @@ const DateCell = ({rowIndex, data, col, ...props}) => (
   </Cell>
 );
 //view bttn, username, clockin, clockout, total hours
-const GridPage = ({containerWidth, containerHeight}) => {
+class GridPage extends React.Component{
+  render(){
+        const {containerWidth, containerHeight} = this.props;
+
         return <div style={{padding: 15}}>
                 <div>Entries</div>
                 <div style={{float: 'left'}}>Time Keeping</div>
@@ -109,8 +113,8 @@ const GridPage = ({containerWidth, containerHeight}) => {
                     >
                       <Column
                         cell={<ViewLinkCell data={dataList} col="Id" />}
-                        width={75}
-                        flexGrow={1}
+                        width={50}
+
                       />
                       <Column
                         header={<Cell>Name</Cell>}
@@ -126,11 +130,13 @@ const GridPage = ({containerWidth, containerHeight}) => {
                         header={<Cell>End Date</Cell>}
                         cell={<DateCell data={dataList} col="EndDate"></DateCell>}
                         width={200}
+                        flexGrow={1}
                       />
                   </Table>
                 </CardText>
               </Card>
         </div>
+      }
 }
 
 export default enhance(GridPage);
