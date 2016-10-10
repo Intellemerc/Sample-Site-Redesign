@@ -5,13 +5,13 @@ import BarChart from './Charts/bar'
 import StackBar from './Charts/StackedBar'
 
 
-const containerStyle = {
+let containerStyle = {
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
   padding: 50
 }
-const cardStyle = {
+let cardStyle = {
   flex:.8,
   minWidth: 450,
   maxWidth: 650,
@@ -33,7 +33,20 @@ const stackBarData = [
     { 'x': 'Cherry', 'y1': 30, 'y2': 25, 'y3': 10, 'y4': 10 },
     { 'x': 'Peach', 'y1': 35, 'y2': 30, 'y3': 15, 'y4': 10 }
 ]
-export default () => {
+export default ({displayMode, dimensions}) => {
+    containerStyle = {
+      ...containerStyle,
+      padding: displayMode === 'phone' ? 5 : 50
+    }
+    cardStyle = {
+      ...cardStyle,
+      width: dimensions.containerWidth,
+      minWidth: undefined,
+      maxWidth: undefined,
+      padding: 5,
+      margin: 5,
+      flex:undefined
+    }
     return (
       <div style={containerStyle}>
         <Card style={cardStyle}>

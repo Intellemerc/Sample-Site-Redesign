@@ -45,13 +45,14 @@ class App extends React.Component {
     }
     getPage(theme) {
         const {page} = this.state;
+        const {containerWidth, containerHeight} = this.props;
         //{page === 'chart' ?  :  }
         switch (page) {
             case 'chart':
-                return <ChartsPage/>;
+                return <ChartsPage displayMode={this.getDisplayMode()} dimensions={{containerWidth, containerHeight}}/>;
                 break;
             case 'grid':
-                return <GridPage/>;
+                return <GridPage displayMode={this.getDisplayMode()}/>;
                 break;
             case 'theme':
                 //const {}

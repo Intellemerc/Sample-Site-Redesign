@@ -67,7 +67,7 @@ console.log(dataList.length)
 const ViewLinkCell = ({rowIndex, data, col, ...props}) => {
   const url = '/fakeRowData/' + data[rowIndex][col];
   return <Cell {...props}>
-    <a href={url}>View</a>
+    <a href="#" onClick={() => alert("Clicked View for " + rowIndex)}>View</a>
   </Cell>
 };
 const TextCell = ({rowIndex, data, col, ...props}) => (
@@ -83,7 +83,32 @@ const DateCell = ({rowIndex, data, col, ...props}) => (
 //view bttn, username, clockin, clockout, total hours
 class GridPage extends React.Component{
   render(){
-        const {containerWidth, containerHeight} = this.props;
+        const {containerWidth, containerHeight, displayMode} = this.props;
+        let columnList = [<Column
+          cell={<ViewLinkCell data={dataList} col="Id" />}
+          width={50}
+
+        />,
+        <Column
+          header={<Cell>Name</Cell>}
+          cell={<TextCell data={dataList} col="UserName"/>}
+          width={200}
+          flexGrow={1}
+        />
+        ];
+        if(displayMode !== 'phone'){
+          columnList = [...columnList, <Column
+              header={<Cell>Start Date</Cell>}
+              cell={<DateCell data={dataList} col="StartDate"></DateCell>}
+              width={200}
+            />,
+            <Column
+              header={<Cell>End Date</Cell>}
+              cell={<DateCell data={dataList} col="EndDate"></DateCell>}
+              width={200}
+              flexGrow={1}/>
+          ]
+        }
 
         return <div style={{padding: 15,height:'100vh'}}>
                 <div>Entries</div>
@@ -99,27 +124,7 @@ class GridPage extends React.Component{
                       height={containerHeight - 30}
                       headerHeight={50}
                     >
-                      <Column
-                        cell={<ViewLinkCell data={dataList} col="Id" />}
-                        width={50}
-
-                      />
-                      <Column
-                        header={<Cell>Name</Cell>}
-                        cell={<TextCell data={dataList} col="UserName"/>}
-                        width={200}
-                      />
-                      <Column
-                        header={<Cell>Start Date</Cell>}
-                        cell={<DateCell data={dataList} col="StartDate"></DateCell>}
-                        width={200}
-                      />
-                      <Column
-                        header={<Cell>End Date</Cell>}
-                        cell={<DateCell data={dataList} col="EndDate"></DateCell>}
-                        width={200}
-                        flexGrow={1}
-                      />
+                    {columnList}
                   </Table>
                 </CardText>
               </Card>

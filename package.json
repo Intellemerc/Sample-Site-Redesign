@@ -28,19 +28,18 @@
   },
   "homepage": "https://github.com/gaearon/react-hot-boilerplate",
   "devDependencies": {
-    "babel-core": "^6.0.20",
     "babel-eslint": "^4.1.3",
+    "eslint": "^1.10.3",
+    "eslint-plugin-react": "^3.6.2",
+    "react-hot-loader": "^1.3.0",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {
     "babel-loader": "^6.0.1",
     "babel-preset-es2015": "^6.0.15",
     "babel-preset-react": "^6.0.15",
     "babel-preset-stage-0": "^6.0.15",
-    "eslint": "^1.10.3",
-    "eslint-plugin-react": "^3.6.2",
-    "react-hot-loader": "^1.3.0",
-    "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.12.1"
-  },
-  "dependencies": {
+    "babel-core": "^6.0.20",
     "d3": "^3.5.14",
     "dateformat": "^1.0.12",
     "fixed-data-table": "^0.6.3",
@@ -54,6 +53,7 @@
     "react-tap-event-plugin": "^1.0.0",
     "react-toolbox": "^1.2.1",
     "recompose": "^0.20.2",
-    "reset-css": "^2.2.0"
+    "reset-css": "^2.2.0",
+    "webpack": "^1.12.2"
   }
 }
