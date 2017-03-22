@@ -26,7 +26,13 @@ class NavMenu extends React.Component{
   }
   menuItems = [
     {
-      text: 'Grid'
+      text: 'GridReduce'
+    },
+    {
+      text: 'GridList'
+    },
+    {
+      text: 'GridHorizontal'
     },
     {
       text: 'Chart'

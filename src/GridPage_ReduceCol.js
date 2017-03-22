@@ -12,58 +12,16 @@ import dateFormat from 'dateformat'
 import Dimensions from 'react-dimensions'
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import dataList from './data'
 
 var enhance = Dimensions({
     containerStyle: {
         height: '100%',
-        width: '100%'
+        width: '85%'
     }
 });
 
-const list = [
-    {
-        Id: 1,
-        UserName: 'James',
-        StartDate: new Date(),
-        EndDate: new Date()
-    },
-    {
-        Id: 2,
-        UserName:'Bob',
-        StartDate: new Date("2016-12-1 5:00"),
-        EndDate: new Date("2016-7-12 5:00")
-    },
-    {
-        Id: 3,
-        UserName:'John',
-        StartDate: new Date(),
-        EndDate: new Date()
-    },
-    {
-        Id: 4,
-        UserName:'Jill',
-        StartDate: new Date("2016-1-1 5:00"),
-        EndDate: new Date("2016-1-1 5:00")
-    },
-    {
-        Id: 5,
-        UserName:'Janet',
-        StartDate: new Date(),
-        EndDate: new Date("2016-2-1 5:00")
-    },
-    {
-        Id: 6,
-        UserName:'Jack',
-        StartDate: new Date(),
-        EndDate: new Date()
-    }
 
-]
-let dataList = []
-for(let i = 0; i < 100; i++){
-  dataList = [...dataList, ...list]
-}
-console.log(dataList.length)
 const ViewLinkCell = ({rowIndex, data, col, ...props}) => {
   const url = '/fakeRowData/' + data[rowIndex][col];
   return <Cell {...props}>
@@ -71,7 +29,7 @@ const ViewLinkCell = ({rowIndex, data, col, ...props}) => {
   </Cell>
 };
 const TextCell = ({rowIndex, data, col, ...props}) => (
-  <Cell {...props}>
+  <Cell {...props} style={{height: 25}}>
     {data[rowIndex][col]}
   </Cell>
 );
@@ -90,36 +48,58 @@ class GridPage extends React.Component{
 
         />,
         <Column
-          header={<Cell>Name</Cell>}
-          cell={<TextCell data={dataList} col="UserName"/>}
-          width={200}
-          flexGrow={1}
-        />
+          header={<Cell>Customer</Cell>}
+          cell={<TextCell data={dataList} col="Customer"/>}
+          width={100}
+          flexGrow={.5}
+        />,
+        <Column
+              header={<Cell>Status</Cell>}
+              cell={<TextCell data={dataList} col="Status"></TextCell>}
+              width={100}
+            />
         ];
         if(displayMode !== 'phone'){
           columnList = [...columnList, <Column
-              header={<Cell>Start Date</Cell>}
-              cell={<DateCell data={dataList} col="StartDate"></DateCell>}
+              header={<Cell>Service</Cell>}
+              cell={<TextCell data={dataList} col="Service"></TextCell>}
+              width={150}
+            />,
+            
+            <Column
+              header={<Cell>Created</Cell>}
+              cell={<DateCell data={dataList} col="Created"></DateCell>}
+              width={100}
+              flexGrow={1}/>,
+              <Column
+              header={<Cell>Location</Cell>}
+              cell={<TextCell data={dataList} col="Location"></TextCell>}
               width={200}
+              flexGrow={1}
             />,
             <Column
-              header={<Cell>End Date</Cell>}
-              cell={<DateCell data={dataList} col="EndDate"></DateCell>}
-              width={200}
-              flexGrow={1}/>
+              header={<Cell>Assigned</Cell>}
+              cell={<TextCell data={dataList} col="Assigned"></TextCell>}
+              width={150}
+            />,
+            <Column
+              header={<Cell>Order #</Cell>}
+              cell={<TextCell data={dataList} col="Id"></TextCell>}
+              width={150}
+            />
           ]
         }
 
         return <div style={{padding: 15,height:'100vh'}}>
-                <div>Entries</div>
-                <div style={{float: 'left'}}>Time Keeping</div>
+                <div>Grid Reduce Columns</div>
+                <div style={{float: 'left'}}>Orders</div>
                 <br />
                 <br />
                 <Card style={{height: '100%'}} >
                   <CardText style={{padding: 0}}>
                     <Table
                       rowsCount={dataList.length}
-                      rowHeight={50}
+                      rowHeight={25}
                       width={containerWidth - 30}
                       height={containerHeight - 30}
                       headerHeight={50}
