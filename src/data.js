@@ -56,7 +56,8 @@ const list = [
 ]
 let dataList = []
 for(let i = 0; i < 10; i++){
-  dataList = [...dataList, ...list]
+    
+  dataList = [...dataList, ...list.map((itm) => ({...itm, Id: i + "-" + itm.Id}))]
 }
 //console.log(dataList.length)
 

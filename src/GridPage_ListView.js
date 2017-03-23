@@ -134,7 +134,7 @@ const OrderCard = ({Id, Customer, Service, Status, Created, Location, Assigned})
 };
 
 const ListView = ({containerWidth, containerHeight, displayMode}) => {
-  const listItems = dataList.map((itm, idx) => <OrderCard key={itm.id} {...itm}/>);
+  const listItems = dataList.map((itm, idx) => <OrderCard {...itm}  key={itm.Id}/>);
   return <div>{listItems}</div>;
 };
 export default enhance((props) => {
