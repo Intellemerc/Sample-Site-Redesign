@@ -11,12 +11,14 @@ import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
 import DialogExampleSimple from './TutorialDiag'
 
+import logo from '../CTLogo.jpg'
+
 
 export default({showMenu, displayMode}) => {
     return <AppBar title="Test Account"
                   iconElementLeft={
                     <div>
-                      <img src="/images/CTLogo.jpg" style={{height:50, display:'block'}}/>
+                      <img src={logo} style={{height:50, display:'block'}}/>
                       {displayMode === 'phone' ? <IconButton
                                   style={{display: 'block'}}
                                   onClick={showMenu}

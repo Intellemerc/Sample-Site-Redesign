@@ -1,17 +1,16 @@
 const list = [
     {
         Id: 1,
-        Customer: 'James',
+        Customer: 'James PC Repair',
         Service: "AC Cleaning",
         Status: "Open",
         Created: new Date(),
-        EndDate: new Date(),
         Location: '10006 N Dale Mabry, Tampa, Fl 33618',
         Assigned: 'Brian Baehr'
     },
     {
         Id: 2,
-        Customer:'Bob',
+        Customer:"Bob Villa's remodeling",
         Service: "AC Cleaning",
         Status: "Closed",
         Created: new Date("2016-12-1 5:00"),
@@ -20,7 +19,7 @@ const list = [
     },
     {
         Id: 3,
-        Customer:'John',
+        Customer:'John Carmack Paintball ltd.',
         Service: "AC Cleaning",
         Status: "Open",
         Created: new Date(),
@@ -29,7 +28,7 @@ const list = [
     },
     {
         Id: 4,
-        Customer:'Jill',
+        Customer:'Jill Clothing Repair',
         Service: "AC Leak Repair",
         Status: "Pending",
         Created: new Date("2016-1-1 5:00"),
@@ -38,7 +37,7 @@ const list = [
     },
     {
         Id: 5,
-        Customer:'Janet',
+        Customer:'Janet School for professional singers',
         Service: "Plumbing",
         Status: "Open",
         Created: new Date(),
@@ -47,9 +46,8 @@ const list = [
     },
     {
         Id: 6,
-        Customer: "New AC",
+        Customer: "Jack College of Surgical Medicine",
         Status: "Closed",
-        UserName:'Jack',
         Created: new Date(),
         Location: '50 somewhereville, Ky 12345',
         Assigned: 'Juan Colina'
@@ -60,6 +58,6 @@ let dataList = []
 for(let i = 0; i < 10; i++){
   dataList = [...dataList, ...list]
 }
-console.log(dataList.length)
+//console.log(dataList.length)
 
 export default dataList;

@@ -17,8 +17,8 @@ import dataList from './data'
 
 var enhance = Dimensions({
     containerStyle: {
-        height: '100%',
-        width: '85%'
+        height: 1600,
+        width: 1700
     }
 });
 
@@ -42,57 +42,52 @@ const DateCell = ({rowIndex, data, col, ...props}) => (
 class GridPage extends React.Component{
   render(){
         const {containerWidth, containerHeight, displayMode} = this.props;
-        let columnList = [<Column
+        let columnList = [<Column key="ViewCell"
           cell={<ViewLinkCell data={dataList} col="Id" />}
           width={50}
 
         />,
-        <Column
+        <Column key="CustomerCell"
           header={<Cell>Customer</Cell>}
           cell={<TextCell data={dataList} col="Customer"/>}
           width={100}
           flexGrow={.5}
         />,
-        <Column
+        <Column key="StatusCell"
               header={<Cell>Status</Cell>}
               cell={<TextCell data={dataList} col="Status"></TextCell>}
               width={100}
-            />
-        ];
-        if(displayMode !== 'phone'){
-          columnList = [...columnList, <Column
+            />,
+        <Column key="ServiceCell"
               header={<Cell>Service</Cell>}
               cell={<TextCell data={dataList} col="Service"></TextCell>}
               width={150}
             />,
-            
-            <Column
-              header={<Cell>Created</Cell>}
-              cell={<DateCell data={dataList} col="Created"></DateCell>}
-              width={100}
-              flexGrow={1}/>,
-              <Column
-              header={<Cell>Location</Cell>}
-              cell={<TextCell data={dataList} col="Location"></TextCell>}
-              width={200}
-              flexGrow={1}
-            />,
-            <Column
-              header={<Cell>Assigned</Cell>}
-              cell={<TextCell data={dataList} col="Assigned"></TextCell>}
-              width={150}
-            />,
-            <Column
-              header={<Cell>Order #</Cell>}
-              cell={<TextCell data={dataList} col="Id"></TextCell>}
-              width={150}
-            />
-          ]
-        }
+          <Column key="CreatedCell"
+            header={<Cell>Created</Cell>}
+            cell={<DateCell data={dataList} col="Created"></DateCell>}
+            width={100}
+            flexGrow={1}/>,
+            <Column key="LocationCell"
+            header={<Cell>Location</Cell>}
+            cell={<TextCell data={dataList} col="Location"></TextCell>}
+            width={200}
+            flexGrow={1}
+          />,
+          <Column key="AssignedCell"
+            header={<Cell>Assigned</Cell>}
+            cell={<TextCell data={dataList} col="Assigned"></TextCell>}
+            width={150}
+          />,
+          <Column key="IdCell"
+            header={<Cell>Order #</Cell>}
+            cell={<TextCell data={dataList} col="Id"></TextCell>}
+            width={150}
+          />
+       ];
 
         return <div style={{padding: 15,height:'100vh'}}>
                 <div>Grid Horizonal Scrolling</div>
-                <div style={{float: 'left'}}>Orders</div>
                 <br />
                 <br />
                 <Card style={{height: '100%'}} >

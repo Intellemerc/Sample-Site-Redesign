@@ -15,7 +15,7 @@ class App extends React.Component {
         super();
         this.state = {
             open: false,
-            page: 'gridreduce',
+            page: 'gridlist',
             isVodafone: false
         }
         this.toggle = this
@@ -101,15 +101,15 @@ class App extends React.Component {
         this.changeColorActions = changeColorActions;
         return <div
             style={{
-            height: '100vh',
-            width: '100vw'
+            height: '100%',
+            width: this.state.page === 'gridhorizontal'? 1600: '100%'
         }}>
             <Header showMenu={this.toggle} displayMode={this.getDisplayMode()}/>
             <div
                 style={{
                 display: 'flex',
-                height: '100vh',
-                width: '100vw'
+                height: '100%',
+                width: this.state.page === 'gridhorizontal'? 1600: '100%'
             }}>
                 <Nav
                     isVodafone={this.state.isVodafone}
@@ -125,8 +125,8 @@ class App extends React.Component {
 
 App = Dimensions({
     containerStyle: {
-        height: '100vh',
-        width: '100vw'
+        height: '100%',
+        width: '100%'
     }
 })(App);
 

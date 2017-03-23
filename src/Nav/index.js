@@ -34,15 +34,15 @@ class NavMenu extends React.Component{
     {
       text: 'GridHorizontal'
     },
-    {
-      text: 'Chart'
-    },
-    {
-      text: 'Theme'
-    },
-    {
-      text: 'Form'
-    }
+    // {
+    //   text: 'Chart'
+    // },
+    // {
+    //   text: 'Theme'
+    // },
+    // {
+    //   text: 'Form'
+    // }
   ]
   render(){
     const {open, toggleMenu, displayMode, changePage, theme, isVodafone} = this.props;
