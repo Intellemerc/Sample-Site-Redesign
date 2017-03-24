@@ -2,7 +2,6 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import Paper from 'material-ui/Paper';
 import Drawer from 'material-ui/Drawer';
-import Dimensions from 'react-dimensions'
 
 /**
  * Dialog with action buttons. The actions are passed in as an array of React objects,
@@ -30,17 +29,16 @@ class OrderGridDetails extends React.Component {
   };
 
   render() {
-    const {containerWidth} = this.props;
     return (
       <span>
-        <a onClick={this.handleOpen} style={{color: 'blue'}}> details</a>
-        <Drawer
+        <a onClick={this.handleOpen} style={{color: 'blue', cursor: 'pointer'}}> details</a>
+        { this.state.open ? <Drawer
           title="Dialog With Actions"
           open={this.state.open}
-          width={this.state.open ? containerWidth : undefined}
+          width={this.state.open ? '100%' : undefined}
           onRequestClose={this.handleClose}
           openSecondary={true}
-          docked={true}
+          docked={false}
         >
           <Paper style={{height: '100%', textAlign: 'left'}} zDepth={2}>
             <Paper style={{height: '32%', margin: '1%'}}>
@@ -72,13 +70,10 @@ class OrderGridDetails extends React.Component {
               />
             </Paper>
           </Paper>
-        </Drawer>
+        </Drawer> : null }
       </span>
     );
   }
 }
 
-export default Dimensions({
-    getHeight: () => '100%',
-    getWidth: () => '100%'
-})(OrderGridDetails);
+export default OrderGridDetails;

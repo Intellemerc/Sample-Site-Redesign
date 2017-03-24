@@ -14,7 +14,6 @@ const navStyle = {
   flex: .2
 }
 
-
 class NavMenu extends React.Component{
   handleClickOutside(evt){
     const {open, toggleMenu} = this.props;
@@ -24,10 +23,10 @@ class NavMenu extends React.Component{
   }
   menuItems = [
     {
-      text: 'GridReduce'
+      text: 'GridList'
     },
     {
-      text: 'GridList'
+      text: 'GridReduce'
     },
     {
       text: 'GridHorizontal'
@@ -42,6 +41,7 @@ class NavMenu extends React.Component{
     //   text: 'Form'
     // }
   ]
+
   render(){
     const {open, toggleMenu, displayMode, changePage, theme, isVodafone} = this.props;
 
@@ -50,7 +50,7 @@ class NavMenu extends React.Component{
       backgroundColor: isVodafone ? '#ccc' : theme.palette.accent1Color
     }
     //console.log(displayMode)
-    const menuItems = this.menuItems.map((itm, idx) => <MenuItem onClick={() => changePage(itm.text.toLowerCase())} key={idx}>{itm.text}</MenuItem>);
+    const menuItems = this.menuItems.map((itm, idx) => <MenuItem onClick={changePage.bind(null, itm.text.toLowerCase())} key={idx}>{itm.text}</MenuItem>);
     let navMenu;
     if(displayMode === 'phone'){
       navMenu = <Drawer open={open} docked={true} containerStyle={navTheme}>

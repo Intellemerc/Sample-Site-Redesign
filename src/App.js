@@ -9,7 +9,7 @@ import GridPageList from './GridPage_ListView'
 import GridPageHor from './GridPage_HorScroll'
 import ThemePage from './ThemePage'
 import FormPage from './FormPage'
-import Perf from 'react-addons-perf'
+//import Perf from 'react-addons-perf'
 
 class App extends React.Component {
     constructor() {
@@ -73,11 +73,11 @@ class App extends React.Component {
                     containerHeight
                 }}/>;
             case 'gridreduce':
-                return <GridPageReduce displayMode={this.getDisplayMode()}/>;
+                return <GridPageReduce { ...this.props } displayMode={this.getDisplayMode()}/>;
             case 'gridlist':
-                return <GridPageList displayMode={this.getDisplayMode()}/>;
+                return <GridPageList { ...this.props } displayMode={this.getDisplayMode()}/>;
             case 'gridhorizontal':
-                return <GridPageHor displayMode={this.getDisplayMode()}/>;
+                return <GridPageHor { ...this.props } displayMode={this.getDisplayMode()}/>;
             case 'theme':
                 //const {}
                 return <ThemePage
@@ -90,8 +90,13 @@ class App extends React.Component {
                 return <div>404: not found</div>
         }
     }
+    // componentDidUpdate() {
+    //     Perf.stop()
+    //     Perf.printExclusive()
+    //     Perf.printWasted()
+    // }
     changePage(page) {
-        Perf.start();
+        //Perf.start();
         this.setState({page: page, open: false})
     }
     render() {
@@ -115,7 +120,9 @@ class App extends React.Component {
                     theme={theme}
                     displayMode={this.getDisplayMode()}
                     toggleMenu={this.toggle}
-                    changePage={this.changePage}/> {this.getPage(theme, changeColorActions)}
+                    changePage={this.changePage}
+                /> 
+                {this.getPage(theme, changeColorActions)}
             </div>
         </div>
     }

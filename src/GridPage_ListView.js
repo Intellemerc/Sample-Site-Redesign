@@ -1,13 +1,9 @@
 import React from 'react'
 import {Table, Column, Cell} from 'fixed-data-table';
-import {
-    Card,
-    CardText
-} from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 import dateFormat from 'dateformat';
 import Dimensions from 'react-dimensions';
-import Perf from 'react-addons-perf'
+//import Perf from 'react-addons-perf'
 
 import dataList from './data'
 import OrderGridDetails from './OrderGridDetails';
@@ -20,26 +16,34 @@ var enhance = Dimensions({
 });
 
 const ViewLinkCell = ({rowIndex, data, col, ...props}) => {
-  return <Cell {...props}>
-    <a href="#" onClick={() => alert("Clicked View for " + rowIndex)}>View</a>
+  return <Cell>
+    <OrderGridDetails {...props} />
   </Cell>
 };
 const TextCell = ({rowIndex, data, col, ...props}) => (
-  <Cell {...props} style={{height: 25}}>
+  <Cell>
     {data[rowIndex][col]}
   </Cell>
 );
 const DateCell = ({rowIndex, data, col, ...props}) => (
-  <Cell {...props}>
+  <Cell>
     {dateFormat(data[rowIndex][col], 'm/dd/yy h:MM:ss TT')}
   </Cell>
 );
 //view bttn, username, clockin, clockout, total hours
-class GridPage extends React.Component{
-  componentDidUpdate() {
-    Perf.stop()
-    Perf.printInclusive()
-    Perf.printWasted()
+const GridPage = enhance(class GridPage extends React.Component{
+  // componentDidUpdate() {
+  //   Perf.stop()
+  //   Perf.printInclusive()
+  //   Perf.printWasted()
+  // }
+  shouldComponentUpdate(nextProps, nextState){
+    const {containerWidth, } = this.props;
+    const {containerWidth: nextContainerWidth }= nextProps;
+    if(containerWidth !== nextContainerWidth){
+      return true;
+    }
+    return false;
   }
   render(){
         const {containerWidth, containerHeight, displayMode} = this.props;
@@ -93,31 +97,25 @@ class GridPage extends React.Component{
 
         return <div style={{padding: 15,height:'100vh'}}>
                 <div>Grid List View</div>
-                <br />
-                <br />
-                <Card style={{height: '100%'}} >
-                  <CardText style={{padding: 0}}>
-                    <Table
-                      rowsCount={dataList.length}
-                      rowHeight={25}
-                      width={containerWidth - 30}
-                      height={containerHeight - 30}
-                      headerHeight={50}
-                    >
-                    {columnList}
-                  </Table>
-                </CardText>
-              </Card>
+                <Table
+                  rowsCount={dataList.length}
+                  rowHeight={25}
+                  width={containerWidth - 30}
+                  height={containerHeight - 30}
+                  headerHeight={50}
+                >
+                {columnList}
+              </Table>
         </div>
       }
-}
+});
 
 const style = {
   padding: 15
 };
 const statusColor = {
   'Open': 'Green',
-  'Closed': 'Red',
+  'Closed': 'lightgray',
   'Pending': 'Orange',
 }
 
@@ -135,18 +133,26 @@ const OrderCard = (props) => {
   </Paper>;
 };
 
-class ListView extends React.Component {
-  componentDidUpdate() {
-    Perf.stop()
-    Perf.printInclusive()
-    Perf.printWasted()
+const listItems = dataList.map((itm, idx) => <OrderCard {...itm}  key={itm.Id}/>);
+const ListView = enhance(class ListView extends React.Component {
+  // componentDidMount() {
+  //   Perf.stop()
+  //   Perf.printInclusive()
+  //   Perf.printWasted()
+  // }
+  shouldComponentUpdate(nextProps, nextState){
+    const {containerWidth} = this.props;
+    const {containerWidth: nextContainerWidth } = nextProps;
+    if(containerWidth !== nextContainerWidth){
+      return true;
+    }
+    return false;
   }
   render(){
-    const listItems = dataList.map((itm, idx) => <OrderCard {...itm}  key={itm.Id}/>);
     return <div>{listItems}</div>;
   }
-};
-export default enhance((props) => {
+});
+export default (props) => {
     const {displayMode} = props;
     return displayMode === 'phone' ? <ListView {...props }></ListView> : <GridPage { ...props } />
-});
+};

@@ -1,46 +1,41 @@
 import React from 'react'
 import {Table, Column, Cell} from 'fixed-data-table';
-import {
-    Card,
-    CardText
-} from 'material-ui/Card';
 import dateFormat from 'dateformat'
 import Dimensions from 'react-dimensions'
-import Perf from 'react-addons-perf'
 
 
 import dataList from './data'
 
 var enhance = Dimensions({
     containerStyle: {
-        height: 1600,
-        width: 1700
+        height: '100%',
+        width: '100%'
     }
 });
-
 const ViewLinkCell = ({rowIndex, data, col, ...props}) => {
-  return <Cell {...props}>
+  return <Cell>
     <a style={{color: 'blue'}} onClick={() => alert('see List example for screen')}>View...</a>
   </Cell>
 };
 const TextCell = ({rowIndex, data, col, ...props}) => (
-  <Cell style={{height: 25}}>
-    a
+  <Cell>
+    {data[rowIndex][col]}
   </Cell>
 );
 //{data[rowIndex][col]}
 const DateCell = ({rowIndex, data, col, ...props}) => (
-  <Cell {...props}>
+  <Cell>
     {dateFormat(data[rowIndex][col], 'm/dd/yy h:MM:ss TT')}
   </Cell>
 );
 //view bttn, username, clockin, clockout, total hours
 class GridPage extends React.Component{
-  componentDidUpdate() {
-   Perf.stop()
-    Perf.printInclusive()
-    Perf.printWasted()
-  }
+  // componentDidUpdate() {
+  //   Perf.stop()
+  //   Perf.printInclusive()
+  //   Perf.printWasted()
+  // }
+
   columnList = null;
   getColumns(){
     return [<Column key="ViewCell"
@@ -87,28 +82,20 @@ class GridPage extends React.Component{
 
   }
   render(){
-        
-        const {containerWidth, containerHeight} = this.props;
         if(!this.columnList){
           this.columnList = this.getColumns()
         }
-        return <div style={{padding: 15,height:'100vh'}}>
+        return <div style={{height:'100%', width: '100%'}}>
                 <div>Grid Horizonal Scrolling</div>
-                <br />
-                <br />
-                <Card style={{height: '100%'}} >
-                  <CardText style={{padding: 0}}>
-                    <Table
-                      rowsCount={dataList.length}
-                      rowHeight={25}
-                      width={containerWidth - 30}
-                      height={containerHeight - 30}
-                      headerHeight={50}
-                    >
-                    { this.columnList }
-                  </Table>
-                </CardText>
-              </Card>
+                <Table
+                  rowsCount={dataList.length}
+                  rowHeight={25}
+                  width={1300}
+                  height={1600}
+                  headerHeight={50}
+                >
+                { this.columnList }
+              </Table>
         </div>
       }
 }

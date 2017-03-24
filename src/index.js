@@ -46,8 +46,8 @@ class ThemeWrapper extends React.Component {
         const {theme} = this.state;
 
         return <MuiThemeProvider muiTheme={theme} style={{
-            height: '100vh',
-            width: '100vw'
+            height: '100%',
+            width: '100%'
         }}><App changeColorActions={{
                     changePrimaryColor: this.changePrimaryColor,
                     changeSecondaryColor: this.changeSecondaryColor,
