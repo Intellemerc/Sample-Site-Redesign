@@ -6,6 +6,7 @@ import {
 } from 'material-ui/Card';
 import dateFormat from 'dateformat'
 import Dimensions from 'react-dimensions'
+import Perf from 'react-addons-perf'
 
 
 import dataList from './data'
@@ -23,10 +24,11 @@ const ViewLinkCell = ({rowIndex, data, col, ...props}) => {
   </Cell>
 };
 const TextCell = ({rowIndex, data, col, ...props}) => (
-  <Cell {...props} style={{height: 25}}>
-    {data[rowIndex][col]}
+  <Cell style={{height: 25}}>
+    a
   </Cell>
 );
+//{data[rowIndex][col]}
 const DateCell = ({rowIndex, data, col, ...props}) => (
   <Cell {...props}>
     {dateFormat(data[rowIndex][col], 'm/dd/yy h:MM:ss TT')}
@@ -34,9 +36,14 @@ const DateCell = ({rowIndex, data, col, ...props}) => (
 );
 //view bttn, username, clockin, clockout, total hours
 class GridPage extends React.Component{
-  render(){
-        const {containerWidth, containerHeight} = this.props;
-        let columnList = [<Column key="ViewCell"
+  componentDidUpdate() {
+   Perf.stop()
+    Perf.printInclusive()
+    Perf.printWasted()
+  }
+  columnList = null;
+  getColumns(){
+    return [<Column key="ViewCell"
           cell={<ViewLinkCell data={dataList} col="Id" />}
           width={50}
 
@@ -45,7 +52,6 @@ class GridPage extends React.Component{
           header={<Cell>Customer</Cell>}
           cell={<TextCell data={dataList} col="Customer"/>}
           width={100}
-          flexGrow={.5}
         />,
         <Column key="StatusCell"
               header={<Cell>Status</Cell>}
@@ -77,9 +83,15 @@ class GridPage extends React.Component{
             header={<Cell>Order #</Cell>}
             cell={<TextCell data={dataList} col="Id"></TextCell>}
             width={150}
-          />
-       ];
+    />];
 
+  }
+  render(){
+        
+        const {containerWidth, containerHeight} = this.props;
+        if(!this.columnList){
+          this.columnList = this.getColumns()
+        }
         return <div style={{padding: 15,height:'100vh'}}>
                 <div>Grid Horizonal Scrolling</div>
                 <br />
@@ -93,7 +105,7 @@ class GridPage extends React.Component{
                       height={containerHeight - 30}
                       headerHeight={50}
                     >
-                    {columnList}
+                    { this.columnList }
                   </Table>
                 </CardText>
               </Card>

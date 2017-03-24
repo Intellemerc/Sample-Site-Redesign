@@ -7,6 +7,7 @@ import {
 import Paper from 'material-ui/Paper';
 import dateFormat from 'dateformat';
 import Dimensions from 'react-dimensions';
+import Perf from 'react-addons-perf'
 
 import dataList from './data'
 import OrderGridDetails from './OrderGridDetails';
@@ -35,6 +36,11 @@ const DateCell = ({rowIndex, data, col, ...props}) => (
 );
 //view bttn, username, clockin, clockout, total hours
 class GridPage extends React.Component{
+  componentDidUpdate() {
+    Perf.stop()
+    Perf.printInclusive()
+    Perf.printWasted()
+  }
   render(){
         const {containerWidth, containerHeight, displayMode} = this.props;
         let columnList = [<Column key="ViewCell"
@@ -130,6 +136,11 @@ const OrderCard = (props) => {
 };
 
 class ListView extends React.Component {
+  componentDidUpdate() {
+    Perf.stop()
+    Perf.printInclusive()
+    Perf.printWasted()
+  }
   render(){
     const listItems = dataList.map((itm, idx) => <OrderCard {...itm}  key={itm.Id}/>);
     return <div>{listItems}</div>;
@@ -137,5 +148,5 @@ class ListView extends React.Component {
 };
 export default enhance((props) => {
     const {displayMode} = props;
-    return displayMode === 'phone' ? <ListView {...props }/> : <GridPage { ...props } />
+    return displayMode === 'phone' ? <ListView {...props }></ListView> : <GridPage { ...props } />
 });

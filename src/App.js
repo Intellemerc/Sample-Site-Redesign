@@ -9,6 +9,7 @@ import GridPageList from './GridPage_ListView'
 import GridPageHor from './GridPage_HorScroll'
 import ThemePage from './ThemePage'
 import FormPage from './FormPage'
+import Perf from 'react-addons-perf'
 
 class App extends React.Component {
     constructor() {
@@ -90,6 +91,7 @@ class App extends React.Component {
         }
     }
     changePage(page) {
+        Perf.start();
         this.setState({page: page, open: false})
     }
     render() {

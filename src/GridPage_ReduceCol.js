@@ -7,8 +7,7 @@ import {
 import dateFormat from 'dateformat'
 import Dimensions from 'react-dimensions'
 import dataList from './data'
-
-import OrderGridDetails from './OrderGridDetails';
+import Perf from 'react-addons-perf'
 
 var enhance = Dimensions({
     containerStyle: {
@@ -35,6 +34,11 @@ const DateCell = ({rowIndex, data, col, ...props}) => (
 );
 //view bttn, username, clockin, clockout, total hours
 class GridPage extends React.Component{
+  componentDidUpdate() {
+    Perf.stop()
+    Perf.printInclusive()
+    Perf.printWasted()
+  }
   render(){
         const {containerWidth, containerHeight, displayMode} = this.props;
         let columnList = [<Column key="ViewCell"
