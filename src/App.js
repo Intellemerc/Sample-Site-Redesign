@@ -52,7 +52,7 @@ class App extends React.Component {
     }
     getDisplayMode() {
         //return 'pc';
-        const {containerWidth, containerHeight} = this.props;
+        const {containerWidth} = this.props;
         if (containerWidth > 1024) 
             return 'pc'
         if (containerWidth > 786) 
@@ -71,26 +71,22 @@ class App extends React.Component {
                     containerWidth,
                     containerHeight
                 }}/>;
-                break;
             case 'gridreduce':
                 return <GridPageReduce displayMode={this.getDisplayMode()}/>;
-                break;
             case 'gridlist':
                 return <GridPageList displayMode={this.getDisplayMode()}/>;
-                break;
             case 'gridhorizontal':
                 return <GridPageHor displayMode={this.getDisplayMode()}/>;
-                break;
             case 'theme':
                 //const {}
                 return <ThemePage
                     toggleCarrier={this.toggleIsVodafone}
                     theme={theme}
                     changeColorActions={this.props.changeColorActions}/>
-                break;
             case 'form':
                 return <FormPage/>;
-                break;
+            default:
+                return <div>404: not found</div>
         }
     }
     changePage(page) {

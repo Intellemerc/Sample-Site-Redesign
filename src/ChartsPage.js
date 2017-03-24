@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import ReactStock from 'react-stockcharts'
+import React from 'react';
+import {Card, CardHeader} from 'material-ui/Card';
 import BarChart from './Charts/bar'
 import StackBar from './Charts/StackedBar'
 

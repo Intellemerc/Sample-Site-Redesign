@@ -2,19 +2,14 @@ import React from 'react'
 import {Table, Column, Cell} from 'fixed-data-table';
 import {
     Card,
-    CardActions,
-    CardHeader,
-    CardMedia,
-    CardTitle,
     CardText
 } from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
 import dateFormat from 'dateformat';
 import Dimensions from 'react-dimensions';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
 
 import dataList from './data'
+import OrderGridDetails from './OrderGridDetails';
 
 var enhance = Dimensions({
     containerStyle: {
@@ -24,7 +19,6 @@ var enhance = Dimensions({
 });
 
 const ViewLinkCell = ({rowIndex, data, col, ...props}) => {
-  const url = '/fakeRowData/' + data[rowIndex][col];
   return <Cell {...props}>
     <a href="#" onClick={() => alert("Clicked View for " + rowIndex)}>View</a>
   </Cell>
@@ -121,7 +115,8 @@ const statusColor = {
   'Pending': 'Orange',
 }
 
-const OrderCard = ({Id, Customer, Service, Status, Created, Location, Assigned}) => {
+const OrderCard = (props) => {
+  const  {Customer, Service, Status, Location, Assigned} = props;
   return <Paper style={style}>
       <span style={{width: '70%', display: 'inline-block', fontWeight: 'bold'}}>{Customer}</span>
       <span style={{color: statusColor[Status], padding: '10px 0 0 0', width:"29%", display: 'inline-block', textAlign: 'right'}}>{Status}</span>
@@ -129,15 +124,16 @@ const OrderCard = ({Id, Customer, Service, Status, Created, Location, Assigned})
       <span style={{padding: '10px 0 0 0', display: 'inline-block', width: '70%'}}>{Location}</span>
       <span style={{padding: '10px 0 0 0', display: 'inline-block', width: '29%', textAlign: 'right'}}>{Service}</span>
       <br />
-      <span style={{padding: '10px 0 0 0', display: 'inline-block', width: '100%'}}>Assigned To: {Assigned}</span>
+      <span style={{padding: '10px 0 0 0', display: 'inline-block', width: '70%'}}>Assigned To: {Assigned}</span>
+      <span style={{padding: '10px 0 0 0', display: 'inline-block', width: '29%', textAlign: 'right'}}><OrderGridDetails {...props} /></span>
   </Paper>;
 };
 
-const ListView = ({containerWidth, containerHeight, displayMode}) => {
+const ListView = ({containerWidth, containerHeight}) => {
   const listItems = dataList.map((itm, idx) => <OrderCard {...itm}  key={itm.Id}/>);
   return <div>{listItems}</div>;
 };
 export default enhance((props) => {
-    const {containerWidth, containerHeight, displayMode} = props;
+    const {displayMode} = props;
     return displayMode === 'phone' ? <ListView {...props }/> : <GridPage { ...props } />
 });

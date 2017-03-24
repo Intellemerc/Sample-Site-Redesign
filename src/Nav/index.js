@@ -1,11 +1,9 @@
 import React from 'react'
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
 import outsideClick from 'react-onclickoutside'
 import {compose} from 'recompose'
 import {Card, CardText} from 'material-ui/Card'
-import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import AppBar from 'material-ui/AppBar'
@@ -58,7 +56,7 @@ class NavMenu extends React.Component{
       navMenu = <Drawer open={open} docked={true} containerStyle={navTheme}>
                     <AppBar title="Nav Menu"
                             style={{padding: 10, height: 95}}
-                            iconElementLeft = {<IconButton
+                            iconElementLeft={<IconButton
                                           style={{display: 'block', float: 'right'}}
                                           onClick={toggleMenu}
                                           tooltip="Close Menu"> <MenuIcon style={{color: 'white'}}/>

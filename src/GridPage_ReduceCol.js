@@ -2,17 +2,13 @@ import React from 'react'
 import {Table, Column, Cell} from 'fixed-data-table';
 import {
     Card,
-    CardActions,
-    CardHeader,
-    CardMedia,
-    CardTitle,
     CardText
 } from 'material-ui/Card';
 import dateFormat from 'dateformat'
 import Dimensions from 'react-dimensions'
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
 import dataList from './data'
+
+import OrderGridDetails from './OrderGridDetails';
 
 var enhance = Dimensions({
     containerStyle: {
@@ -23,9 +19,8 @@ var enhance = Dimensions({
 
 
 const ViewLinkCell = ({rowIndex, data, col, ...props}) => {
-  const url = '/fakeRowData/' + data[rowIndex][col];
   return <Cell {...props}>
-    <a href="#" onClick={() => alert("Clicked View for " + rowIndex)}>View</a>
+    <OrderGridDetails  />
   </Cell>
 };
 const TextCell = ({rowIndex, data, col, ...props}) => (

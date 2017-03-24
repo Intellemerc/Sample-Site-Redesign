@@ -2,16 +2,11 @@ import React from 'react'
 import {Table, Column, Cell} from 'fixed-data-table';
 import {
     Card,
-    CardActions,
-    CardHeader,
-    CardMedia,
-    CardTitle,
     CardText
 } from 'material-ui/Card';
 import dateFormat from 'dateformat'
 import Dimensions from 'react-dimensions'
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
+
 
 import dataList from './data'
 
@@ -23,7 +18,6 @@ var enhance = Dimensions({
 });
 
 const ViewLinkCell = ({rowIndex, data, col, ...props}) => {
-  const url = '/fakeRowData/' + data[rowIndex][col];
   return <Cell {...props}>
     <a href="#" onClick={() => alert("Clicked View for " + rowIndex)}>View</a>
   </Cell>
@@ -41,7 +35,7 @@ const DateCell = ({rowIndex, data, col, ...props}) => (
 //view bttn, username, clockin, clockout, total hours
 class GridPage extends React.Component{
   render(){
-        const {containerWidth, containerHeight, displayMode} = this.props;
+        const {containerWidth, containerHeight} = this.props;
         let columnList = [<Column key="ViewCell"
           cell={<ViewLinkCell data={dataList} col="Id" />}
           width={50}
