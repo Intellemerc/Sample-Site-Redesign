@@ -129,9 +129,11 @@ const OrderCard = (props) => {
   </Paper>;
 };
 
-const ListView = ({containerWidth, containerHeight}) => {
-  const listItems = dataList.map((itm, idx) => <OrderCard {...itm}  key={itm.Id}/>);
-  return <div>{listItems}</div>;
+class ListView extends React.Component {
+  render(){
+    const listItems = dataList.map((itm, idx) => <OrderCard {...itm}  key={itm.Id}/>);
+    return <div>{listItems}</div>;
+  }
 };
 export default enhance((props) => {
     const {displayMode} = props;

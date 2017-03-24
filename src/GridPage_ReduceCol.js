@@ -20,7 +20,7 @@ var enhance = Dimensions({
 
 const ViewLinkCell = ({rowIndex, data, col, ...props}) => {
   return <Cell {...props}>
-    <OrderGridDetails  />
+    <a style={{color: 'blue'}} onClick={() => alert('see List example for screen')}>View...</a>
   </Cell>
 };
 const TextCell = ({rowIndex, data, col, ...props}) => (
