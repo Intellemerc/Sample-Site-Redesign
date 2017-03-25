@@ -3410,10 +3410,6 @@ lodash.cond@^4.3.0:
   version "4.5.2"
   resolved "https://registry.yarnpkg.com/lodash.cond/-/lodash.cond-4.5.2.tgz#f471a1da486be60f6ab955d17115523dd1d255d5"
 
-lodash.flattendeep@^4.1.0:
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/lodash.flattendeep/-/lodash.flattendeep-4.4.0.tgz#fb030917f86a3134e5bc9bec0d69e0013ddfedb2"
-
 lodash.isarguments@^3.0.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/lodash.isarguments/-/lodash.isarguments-3.1.0.tgz#2f573d85c6a24289ff00663b491c1d338ff3458a"
@@ -4590,14 +4586,6 @@ react-scripts@0.9.5:
   optionalDependencies:
     fsevents "1.0.17"
 
-react-stockcharts@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/react-stockcharts/-/react-stockcharts-0.5.0.tgz#5150218c643a292eb39ad28fe6668bed38c67ae9"
-  dependencies:
-    d3 "^3.5.14"
-    lodash.flattendeep "^4.1.0"
-    save-svg-as-png "^1.0.2"
-
 react-tap-event-plugin@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/react-tap-event-plugin/-/react-tap-event-plugin-2.0.1.tgz#316beb3bc6556e29ec869a7293e89c826a9074d2"
@@ -4959,10 +4947,6 @@ sane@~1.4.1:
     minimist "^1.1.1"
     walker "~1.0.5"
     watch "~0.10.0"
-
-save-svg-as-png@^1.0.2:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/save-svg-as-png/-/save-svg-as-png-1.1.0.tgz#8a799b2c9935301e40d3b2bfa2bf8d53fd3cbf2a"
 
 sax@^1.2.1, sax@~1.2.1:
   version "1.2.2"

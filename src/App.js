@@ -1,14 +1,14 @@
 import React from 'react';
 import Dimensions from 'react-dimensions'
 
-import ChartsPage from './ChartsPage';
+//import ChartsPage from './ChartsPage';
 import Nav from './Nav'
 import Header from './Header'
 import GridPageReduce from './GridPage_ReduceCol'
 import GridPageList from './GridPage_ListView'
 import GridPageHor from './GridPage_HorScroll'
-import ThemePage from './ThemePage'
-import FormPage from './FormPage'
+//import ThemePage from './ThemePage'
+//import FormPage from './FormPage'
 //import Perf from 'react-addons-perf'
 
 class App extends React.Component {
@@ -65,27 +65,27 @@ class App extends React.Component {
         const {containerWidth, containerHeight} = this.props;
         //{page === 'chart' ?  :  }
         switch (page) {
-            case 'chart':
+            /*case 'chart':
                 return <ChartsPage
                     displayMode={this.getDisplayMode()}
                     dimensions={{
                     containerWidth,
                     containerHeight
-                }}/>;
+                }}/>;*/
             case 'gridreduce':
                 return <GridPageReduce { ...this.props } displayMode={this.getDisplayMode()}/>;
             case 'gridlist':
                 return <GridPageList { ...this.props } displayMode={this.getDisplayMode()}/>;
             case 'gridhorizontal':
                 return <GridPageHor { ...this.props } displayMode={this.getDisplayMode()}/>;
-            case 'theme':
+            /*case 'theme':
                 //const {}
                 return <ThemePage
                     toggleCarrier={this.toggleIsVodafone}
                     theme={theme}
                     changeColorActions={this.props.changeColorActions}/>
             case 'form':
-                return <FormPage/>;
+                return <FormPage/>;*/
             default:
                 return <div>404: not found</div>
         }
