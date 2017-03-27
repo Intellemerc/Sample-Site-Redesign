@@ -52,7 +52,7 @@ class NavMenu extends React.Component{
     //console.log(displayMode)
     const menuItems = this.menuItems.map((itm, idx) => <MenuItem onClick={changePage.bind(null, itm.text.toLowerCase())} key={idx}>{itm.text}</MenuItem>);
     let navMenu;
-    if(displayMode === 'phone'){
+    if(displayMode === 'tablet' || displayMode === 'phone'){
       navMenu = <Drawer open={open} docked={true} containerStyle={navTheme}>
                     <AppBar title="Nav Menu"
                             style={{padding: 10, height: 95}}

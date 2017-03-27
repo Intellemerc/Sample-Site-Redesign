@@ -56,7 +56,7 @@ class App extends React.Component {
         const {containerWidth} = this.props;
         if (containerWidth > 1024) 
             return 'pc'
-        if (containerWidth > 786) 
+        if (containerWidth > 768) 
             return 'tablet'
         return 'phone'
     }

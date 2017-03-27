@@ -55,7 +55,7 @@ class GridPage extends React.Component{
                                 width={100}
                               />
         ];
-        if(displayMode !== 'phone'){
+        if(displayMode !== 'tablet' || displayMode !== 'phone'){
           columnList = [...columnList, <Column  key="ServiceCell"
               header={<Cell>Service</Cell>}
               cell={<TextCell data={dataList} col="Service"></TextCell>}

@@ -13,7 +13,7 @@ export default({showMenu, displayMode}) => {
                   iconElementLeft={
                     <div>
                       <img alt="Logo" src={logo} style={{height:50, display:'block'}}/>
-                      {displayMode === 'phone' ? <IconButton
+                      {displayMode === 'tablet'  || displayMode === 'phone' ? <IconButton
                                   style={{display: 'block'}}
                                   onClick={showMenu}
                                   tooltip="Main Menu"> <MenuIcon style={{color: 'white'}}/>

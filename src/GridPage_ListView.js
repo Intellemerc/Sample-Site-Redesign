@@ -64,7 +64,7 @@ const GridPage = enhance(class GridPage extends React.Component{
               width={100}
             />
         ];
-        if(displayMode !== 'phone'){
+        if(displayMode !== 'tablet' || displayMode !== 'phone'){
           columnList = [...columnList, <Column key="ServiceCell"
               header={<Cell>Service</Cell>}
               cell={<TextCell data={dataList} col="Service"></TextCell>}
@@ -154,5 +154,5 @@ const ListView = enhance(class ListView extends React.Component {
 });
 export default (props) => {
     const {displayMode} = props;
-    return displayMode === 'phone' ? <ListView {...props }></ListView> : <GridPage { ...props } />
+    return displayMode === 'tablet' || displayMode === 'phone' ? <ListView {...props }></ListView> : <GridPage { ...props } />
 };
