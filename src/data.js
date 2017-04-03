@@ -6,7 +6,7 @@ const list = [
         Status: "Open",
         Created: new Date(),
         Location: '10006 N Dale Mabry, Tampa, Fl 33618',
-        Assigned: 'Brian Baehr'
+        Assigned: 'Brian B'
     },
     {
         Id: 2,
@@ -15,7 +15,7 @@ const list = [
         Status: "Closed",
         Created: new Date("2016-12-1 5:00"),
         Location: '123 flicka flacka ln',
-        Assigned: 'Brian Leonard'  
+        Assigned: 'Brian L'  
     },
     {
         Id: 3,
@@ -24,7 +24,7 @@ const list = [
         Status: "Open",
         Created: new Date(),
         Location: '10006 N Dale Mabry, Tampa, Fl 33618',
-        Assigned: 'Andrew Armstrong'
+        Assigned: 'Andrew A'
     },
     {
         Id: 4,
@@ -33,7 +33,7 @@ const list = [
         Status: "Pending",
         Created: new Date("2016-1-1 5:00"),
         Location: '8910 N Dale Mabry, Tampa, Fl',
-        Assigned: 'Mitch Hastings'
+        Assigned: 'Mitch H'
     },
     {
         Id: 5,
@@ -42,7 +42,7 @@ const list = [
         Status: "Open",
         Created: new Date(),
         Location: '10006 N Dale Mabry, Tampa, Fl 33618',
-        Assigned: 'Andrew Armstrong'
+        Assigned: 'Andrew A'
     },
     {
         Id: 6,
@@ -50,7 +50,7 @@ const list = [
         Status: "Closed",
         Created: new Date(),
         Location: '50 somewhereville, Ky 12345',
-        Assigned: 'Juan Colina'
+        Assigned: 'Juan C'
     }
 
 ]
